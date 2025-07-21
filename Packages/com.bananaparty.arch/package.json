@@ -1,0 +1,9 @@
+{
+  "name": "com.bananaparty.arch",
+  "version": "1.0.0",
+  "type": "library",
+  "displayName": "Arch",
+  "unity": "2022.3",
+  "description": "Architecture alternative to Singletons and DI Containers.",
+  "author": "github.com/forcepusher"
+}
