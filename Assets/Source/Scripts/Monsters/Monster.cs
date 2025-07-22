@@ -21,5 +21,10 @@ namespace BananaParty.Arch.Samples
             _pathProgress.Advance(_movementSpeed * Time.fixedDeltaTime);
             transform.position = _pathProgress.Position;
         }
+
+        public void Kill()
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -57,7 +57,7 @@ namespace BananaParty.Arch.Samples
 
         private void FireAt(Monster target)
         {
-            GameObject.Instantiate(_arrowProjectile, transform.position, Quaternion.identity).Target = target;
+            GameObject.Instantiate(_arrowProjectile, transform.position, Quaternion.identity).FlyAt(target);
         }
     }
 }
