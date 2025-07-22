@@ -16,15 +16,13 @@ namespace BananaParty.Arch.Samples
         [SerializeField]
         private float _spawnInterval = 0.2f;
 
-        // TODO: Relying on update and waitforseconds is incorrect.
-        // Need to rely on FixedUpdate, manually calling
-        public IEnumerator Spawn(Vector3 position)
+        public IEnumerator SpawnCoroutineFixedTime(float deltaTime, Vector3 position)
         {
             float timeSinceStart = 0f;
 
             while (timeSinceStart < _spawnDelay)
             {
-                timeSinceStart += Time.fixedDeltaTime;
+                timeSinceStart += deltaTime;
                 yield return null;
             }
 
@@ -35,7 +33,7 @@ namespace BananaParty.Arch.Samples
                 float timeSinceSpawn = 0f;
                 while (timeSinceSpawn < _spawnInterval)
                 {
-                    timeSinceSpawn += Time.fixedDeltaTime;
+                    timeSinceSpawn += deltaTime;
                     yield return null;
                 }
             }

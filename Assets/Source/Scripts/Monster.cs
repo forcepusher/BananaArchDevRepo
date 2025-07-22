@@ -16,8 +16,6 @@ namespace BananaParty.Arch.Samples
             _pathProgress = _roadPathReference.Value.StartFollowing();
         }
 
-        // Using FixedUpdate to make sure simulation remains sorta consistent on any framerate
-        // Besides, achieving the stylized movement effect
         private void FixedUpdate()
         {
             _pathProgress.Advance(_movementSpeed * Time.fixedDeltaTime);

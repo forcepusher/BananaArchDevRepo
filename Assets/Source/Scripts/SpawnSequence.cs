@@ -18,13 +18,17 @@ namespace BananaParty.Arch.Samples
 
         private void FixedUpdate()
         {
-            Debug.Log(_spawnPacksCoroutine.MoveNext());
+            _spawnPacksCoroutine.MoveNext();
         }
 
         private IEnumerator SpawnPacks()
         {
             foreach (MonsterPack monsterPack in _monsterPacks)
-                yield return monsterPack.Spawn(transform.position);
+            {
+                IEnumerator spawnCoroutine = monsterPack.SpawnCoroutineFixedTime(Time.fixedDeltaTime, transform.position);
+                while (spawnCoroutine.MoveNext())
+                    yield return spawnCoroutine.Current;
+            }
         }
     }
 }
