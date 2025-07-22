@@ -9,9 +9,18 @@ namespace BananaParty.Arch.Samples
         [SerializeField]
         private ArrowProjectile _arrowProjectile;
         [SerializeField]
-        private float _range;
-
+        private float _range = 10f;
+        [SerializeField]
+        private float _fireInterval = 1f;
+        
         private Monster _target;
+        private int _ticksSinceLastShot = 0;
+        private int _fireIntervalTicks;
+
+        private void Awake()
+        {
+            _fireIntervalTicks = Mathf.RoundToInt(_fireInterval / Time.fixedDeltaTime);
+        }
 
         private void FixedUpdate()
         {
@@ -20,6 +29,13 @@ namespace BananaParty.Arch.Samples
 
             if (_target == null)
                 _target = FindNearestTarget();
+
+            _ticksSinceLastShot += 1;
+            if (_ticksSinceLastShot >= _fireIntervalTicks)
+            {
+                FireAt(_target);
+                _ticksSinceLastShot = 0;
+            }
         }
 
         private Monster FindNearestTarget()
@@ -37,6 +53,11 @@ namespace BananaParty.Arch.Samples
             }
 
             return nearestMonster;
+        }
+
+        private void FireAt(Monster target)
+        {
+            GameObject.Instantiate(_arrowProjectile, transform.position, Quaternion.identity).Target = target;
         }
     }
 }
