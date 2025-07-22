@@ -1,7 +1,7 @@
 # --- Modified settings
 
 # Trash packages
-[/Assets/Reflex/**]
+[/Assets/Spine/**]
 generated_code = true
 
 # Annoying line endings
