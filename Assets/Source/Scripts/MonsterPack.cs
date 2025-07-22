@@ -22,7 +22,6 @@ namespace BananaParty.Arch.Samples
             int spawnIntervalTicks = Mathf.RoundToInt(_spawnInterval / tickInterval);
 
             int ticksSinceStart = 0;
-
             while (ticksSinceStart < spawnDelayTicks)
             {
                 yield return null;
