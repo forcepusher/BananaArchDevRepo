@@ -20,12 +20,24 @@ namespace BananaParty.Arch.Samples
         // Need to rely on FixedUpdate, manually calling
         public IEnumerator Spawn(Vector3 position)
         {
-            yield return new WaitForSeconds(_spawnDelay);
+            float timeSinceStart = 0f;
+
+            while (timeSinceStart < _spawnDelay)
+            {
+                timeSinceStart += Time.fixedDeltaTime;
+                yield return null;
+            }
 
             for (int spawnIteration = 1; spawnIteration <= _spawnQuantity; spawnIteration += 1)
             {
                 GameObject.Instantiate(_monsterPrefab, position, Quaternion.identity);
-                yield return new WaitForSeconds(_spawnInterval);
+
+                float timeSinceSpawn = 0f;
+                while (timeSinceSpawn < _spawnInterval)
+                {
+                    timeSinceSpawn += Time.fixedDeltaTime;
+                    yield return null;
+                }
             }
         }
     }
