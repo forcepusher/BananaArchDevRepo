@@ -20,7 +20,7 @@ namespace BananaParty.Arch.Samples
         // Besides, achieving the stylized movement effect
         private void FixedUpdate()
         {
-            _pathProgress.Advance(_movementSpeed);
+            _pathProgress.Advance(_movementSpeed * Time.fixedDeltaTime);
             transform.position = _pathProgress.Position;
         }
     }
