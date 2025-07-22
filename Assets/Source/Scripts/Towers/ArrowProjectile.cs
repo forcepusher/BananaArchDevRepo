@@ -29,6 +29,9 @@ namespace BananaParty.Arch.Samples
 
         private void FixedUpdate()
         {
+            if (_target != null)
+                _lastKnownTargetPosition = _target.transform.position;
+
             _ticksToReachTarget -= 1;
 
             if (_ticksToReachTarget <= 0)

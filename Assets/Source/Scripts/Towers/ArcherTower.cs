@@ -31,10 +31,13 @@ namespace BananaParty.Arch.Samples
                 _target = FindNearestTarget();
 
             _ticksSinceLastShot += 1;
-            if (_ticksSinceLastShot >= _fireIntervalTicks)
+            if (_target != null)
             {
-                FireAt(_target);
-                _ticksSinceLastShot = 0;
+                if (_ticksSinceLastShot >= _fireIntervalTicks)
+                {
+                    FireAt(_target);
+                    _ticksSinceLastShot = 0;
+                }
             }
         }
 

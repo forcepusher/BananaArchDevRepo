@@ -3261,7 +3261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d7714eed17bd94da409dd95003534a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _monsterReferenceList: {fileID: 11400000, guid: fa7696b1359abb54799e086ab4077150, type: 2}
   _arrowProjectile: {fileID: -8065805672393859336, guid: e11d73acd9541994d8a81b9accdb21e3, type: 3}
+  _range: 0
+  _fireInterval: 1
 --- !u!212 &1974020922
 SpriteRenderer:
   m_ObjectHideFlags: 0
