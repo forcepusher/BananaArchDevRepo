@@ -20,9 +20,9 @@ namespace BananaParty.Arch.Samples
         {
             yield return new WaitForSeconds(_spawnDelay);
 
-            for (int spawnIteration = 0; spawnIteration < _spawnQuantity; spawnIteration += 1)
+            for (int spawnIteration = 1; spawnIteration <= _spawnQuantity; spawnIteration += 1)
             {
-                Monster monster = GameObject.Instantiate(_monsterPrefab, position, Quaternion.identity);
+                GameObject.Instantiate(_monsterPrefab, position, Quaternion.identity);
                 yield return new WaitForSeconds(_spawnInterval);
             }
         }
