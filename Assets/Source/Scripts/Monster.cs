@@ -2,12 +2,17 @@ using UnityEngine;
 
 namespace BananaParty.Arch.Samples
 {
-    public class Monster : MonoBehaviour, IPathAgent
+    public class Monster : MonoBehaviour
     {
         [SerializeField]
         private PathReference _roadPathReference;
 
-        public int CurrentWaypointIndex { get; set; } = 0;
+        private PathProgress _pathProgress;
+
+        private void Start()
+        {
+            _pathProgress = _roadPathReference.Value.StartFollowing();
+        }
 
         // Using FixedUpdate to make sure simulation remains sorta consistent on any framerate
         // Besides, achieving the stylized movement effect

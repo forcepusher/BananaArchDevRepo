@@ -6,11 +6,8 @@ namespace BananaParty.Arch.Samples
     public class Path : MonoBehaviour
     {
         [SerializeField]
-        private List<Transform> _waypoints;
+        public List<Transform> Waypoints;
 
-        public void Traverse(IPathAgent pathAgent, float movementDelta)
-        {
-            
-        }
+        public PathProgress StartFollowing() => new(this);
     }
 }
