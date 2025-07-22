@@ -6,6 +6,8 @@ namespace BananaParty.Arch.Samples
     {
         [SerializeField]
         private PathReference _roadPathReference;
+        [SerializeField]
+        private float _movementSpeed = 1f;
 
         private PathProgress _pathProgress;
 
@@ -18,7 +20,8 @@ namespace BananaParty.Arch.Samples
         // Besides, achieving the stylized movement effect
         private void FixedUpdate()
         {
-            //Vector3.MoveTowards(transform.position,)
+            _pathProgress.Advance(_movementSpeed);
+            transform.position = _pathProgress.Position;
         }
     }
 }
