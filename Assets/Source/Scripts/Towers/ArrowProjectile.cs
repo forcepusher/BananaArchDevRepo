@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace BananaParty.Arch.Samples
 {
@@ -16,12 +14,16 @@ namespace BananaParty.Arch.Samples
         {
             _target = target;
             _lastKnownTargetPosition = target.transform.position;
+
+            RotateTo(_lastKnownTargetPosition);
         }
 
         private void FixedUpdate()
         {
             if (_target != null)
                 _lastKnownTargetPosition = _target.transform.position;
+
+            RotateTo(_lastKnownTargetPosition);
 
             float distancePerTick = _speed * Time.fixedDeltaTime;
             transform.position = Vector3.MoveTowards(transform.position, _lastKnownTargetPosition, distancePerTick);
@@ -33,6 +35,12 @@ namespace BananaParty.Arch.Samples
 
                 Destroy(gameObject);
             }
+        }
+
+        private void RotateTo(Vector3 targetPosition)
+        {
+            Vector3 targetDirection = targetPosition - transform.position;
+            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg);
         }
     }
 }
