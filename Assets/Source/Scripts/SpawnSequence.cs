@@ -18,7 +18,8 @@ namespace BananaParty.Arch.Samples
 
         private void FixedUpdate()
         {
-            _spawnPacksCoroutine.MoveNext();
+            if (!_spawnPacksCoroutine.MoveNext())
+                enabled = false;
         }
 
         private IEnumerator SpawnPacks()
