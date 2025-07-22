@@ -53,3 +53,6 @@ TagManager:
   - name: Castle
     uniqueID: 2295139793
     locked: 0
+  - name: Tower
+    uniqueID: 4168333369
+    locked: 0
