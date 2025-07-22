@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace BananaParty.Arch.Samples
 {
@@ -22,15 +23,12 @@ namespace BananaParty.Arch.Samples
             _ticksToReachTarget = 1 + Mathf.RoundToInt(distanceToTarget / distancePerTick);
         }
 
-        private void Update()
-        {
-            
-        }
-
         private void FixedUpdate()
         {
             if (_target != null)
                 _lastKnownTargetPosition = _target.transform.position;
+
+            transform.position = Vector3.Lerp(transform.position, _lastKnownTargetPosition, 1f / _ticksToReachTarget);
 
             _ticksToReachTarget -= 1;
 
