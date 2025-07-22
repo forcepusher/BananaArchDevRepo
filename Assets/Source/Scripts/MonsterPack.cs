@@ -16,6 +16,8 @@ namespace BananaParty.Arch.Samples
         [SerializeField]
         private float _spawnInterval = 0.2f;
 
+        // TODO: Relying on update and waitforseconds is incorrect.
+        // Need to rely on FixedUpdate, manually calling
         public IEnumerator Spawn(Vector3 position)
         {
             yield return new WaitForSeconds(_spawnDelay);

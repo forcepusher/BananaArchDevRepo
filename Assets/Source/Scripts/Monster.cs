@@ -7,7 +7,7 @@ namespace BananaParty.Arch.Samples
         [SerializeField]
         private PathReference _roadPathReference;
         [SerializeField]
-        private float _movementSpeed = 1f;
+        private float _movementSpeed = 2f;
 
         private PathProgress _pathProgress;
 

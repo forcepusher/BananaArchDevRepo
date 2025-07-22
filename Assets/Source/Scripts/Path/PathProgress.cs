@@ -27,10 +27,13 @@ namespace BananaParty.Arch.Samples
 
             while (_progressToNextWaypoint >= 1f)
             {
-                if (_previousWaypointIndex + 1 >= _path.Waypoints.Count)
+                int lastNextWaypointIndex = _path.Waypoints.Count - 1;
+                int lastPreviousWaypointIndex = lastNextWaypointIndex - 1;
+
+                if (_previousWaypointIndex + 1 > lastPreviousWaypointIndex)
                 {
                     _progressToNextWaypoint = 1f;
-                    return;
+                    break;
                 }
 
                 _progressToNextWaypoint -= 1f;
