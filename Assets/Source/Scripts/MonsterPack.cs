@@ -16,25 +16,28 @@ namespace BananaParty.Arch.Samples
         [SerializeField]
         private float _spawnInterval = 0.2f;
 
-        public IEnumerator SpawnCoroutineFixedTime(float deltaTime, Vector3 position)
+        public IEnumerator SpawnCoroutineFixedTime(float tickInterval, Vector3 position)
         {
-            float timeSinceStart = 0f;
+            int spawnDelayTicks = Mathf.RoundToInt(_spawnDelay / tickInterval);
+            int spawnIntervalTicks = Mathf.RoundToInt(_spawnInterval / tickInterval);
 
-            while (timeSinceStart < _spawnDelay)
+            int ticksSinceStart = 0;
+
+            while (ticksSinceStart < spawnDelayTicks)
             {
-                timeSinceStart += deltaTime;
                 yield return null;
+                ticksSinceStart += 1;
             }
 
             for (int spawnIteration = 1; spawnIteration <= _spawnQuantity; spawnIteration += 1)
             {
                 GameObject.Instantiate(_monsterPrefab, position, Quaternion.identity);
 
-                float timeSinceSpawn = 0f;
-                while (timeSinceSpawn < _spawnInterval)
+                int ticksSinceLastSpawn = 0;
+                while (ticksSinceLastSpawn < spawnIntervalTicks)
                 {
-                    timeSinceSpawn += deltaTime;
                     yield return null;
+                    ticksSinceLastSpawn += 1;
                 }
             }
         }
