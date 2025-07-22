@@ -7,5 +7,10 @@ namespace BananaParty.Arch.Samples
     {
         [SerializeField]
         private List<Transform> _waypoints;
+
+        public void Traverse(IPathAgent pathAgent, float movementDelta)
+        {
+            
+        }
     }
 }
