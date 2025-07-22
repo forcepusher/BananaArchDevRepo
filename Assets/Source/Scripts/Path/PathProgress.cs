@@ -9,11 +9,11 @@ namespace BananaParty.Arch.Samples
         private int _currentWaypointIndex = 0;
         private float _progressToNextWaypoint = 0f;
 
-        public Transform CurrentWaypoint => _path.Waypoints[_currentWaypointIndex];
+        public Vector3 PreviousWaypointPosition => _path.Waypoints[_currentWaypointIndex].position;
 
-        public Transform NextWaypoint => _path.Waypoints[_currentWaypointIndex + 1];
+        public Vector3 NextWaypointPosition => _path.Waypoints[_currentWaypointIndex + 1].position;
 
-        public Vector3 Position => Vector3.Lerp(CurrentWaypoint.position, NextWaypoint.position, _progressToNextWaypoint);    
+        public Vector3 Position => Vector3.Lerp(PreviousWaypointPosition, NextWaypointPosition, _progressToNextWaypoint);    
 
         public PathProgress(Path path)
         {
@@ -22,6 +22,7 @@ namespace BananaParty.Arch.Samples
 
         public void Advance(float movementDelta)
         {
+            float distanceBetweenWaypoints = Vector3.Distance(PreviousWaypointPosition, NextWaypointPosition);
 
         }
     }
