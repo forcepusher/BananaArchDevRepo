@@ -3263,7 +3263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monsterReferenceList: {fileID: 11400000, guid: fa7696b1359abb54799e086ab4077150, type: 2}
   _arrowProjectile: {fileID: -8065805672393859336, guid: e11d73acd9541994d8a81b9accdb21e3, type: 3}
-  _range: 0
+  _range: 5
   _fireInterval: 1
 --- !u!212 &1974020922
 SpriteRenderer:
@@ -3363,7 +3363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monsterPacks:
   - _monsterPrefab: {fileID: 4147384857791544120, guid: 557b63aeb59fc524da1fd85470a851d6, type: 3}
-    _spawnQuantity: 5
+    _spawnQuantity: 50
     _spawnDelay: 1
     _spawnInterval: 0.3
 --- !u!1660057539 &9223372036854775807

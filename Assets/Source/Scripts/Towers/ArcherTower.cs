@@ -9,7 +9,7 @@ namespace BananaParty.Arch.Samples
         [SerializeField]
         private ArrowProjectile _arrowProjectile;
         [SerializeField]
-        private float _range = 10f;
+        private float _range = 5f;
         [SerializeField]
         private float _fireInterval = 1f;
         
@@ -54,6 +54,9 @@ namespace BananaParty.Arch.Samples
                     nearestMonster = monster;
                 }
             }
+
+            if (nearestMonsterDistance > _range)
+                return null;
 
             return nearestMonster;
         }

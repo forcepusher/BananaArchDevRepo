@@ -11,16 +11,11 @@ namespace BananaParty.Arch.Samples
 
         private Monster _target;
         private Vector3 _lastKnownTargetPosition;
-        private int _ticksToReachTarget;
 
         public void FlyAt(Monster target)
         {
             _target = target;
             _lastKnownTargetPosition = target.transform.position;
-
-            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-            float distancePerTick = _speed * Time.fixedDeltaTime;
-            _ticksToReachTarget = 1 + Mathf.RoundToInt(distanceToTarget / distancePerTick);
         }
 
         private void FixedUpdate()
@@ -28,11 +23,10 @@ namespace BananaParty.Arch.Samples
             if (_target != null)
                 _lastKnownTargetPosition = _target.transform.position;
 
-            transform.position = Vector3.Lerp(transform.position, _lastKnownTargetPosition, 1f / _ticksToReachTarget);
-
-            _ticksToReachTarget -= 1;
-
-            if (_ticksToReachTarget <= 0)
+            float distancePerTick = _speed * Time.fixedDeltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, _lastKnownTargetPosition, distancePerTick);
+            
+            if (Vector3.Distance(transform.position, _lastKnownTargetPosition) <= distancePerTick * 0.25f)
             {
                 if (_target != null)
                     _target.Kill();
