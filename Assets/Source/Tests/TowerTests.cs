@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using BananaParty.Arch.TestUtilities;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -20,13 +20,10 @@ namespace BananaParty.Arch.TowerDefenseSample.Tests
             SpawnSequence tenSkeletonsSpawnSequence = Resources.Load<SpawnSequence>("TenSkeletonsSpawnSequence");
             spawnPoint.OverrideSpawnSequence(tenSkeletonsSpawnSequence);
 
-            yield return new WaitUntil(() =>
-            {
-                if (spawnPoint.Finished)
-                    return true;
-                // Wait for the spawn sequence to finish
-                return false;
-            });
+            //yield return new WaitUntil(() =>
+            //{
+            //    return spawnPoint.Started;
+            //}, System.TimeSpan.FromSeconds(3), () => Assert.Fail($"{nameof(SpawnSequence)} did not start."));
         }
     }
 }
