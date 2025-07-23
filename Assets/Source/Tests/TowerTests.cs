@@ -1,9 +1,14 @@
-using UnityEngine;
+using System.Collections;
+using UnityEngine.TestTools;
 
 namespace BananaParty.Arch.TowerDefenseSample.Tests
 {
-    public class TowerTests : MonoBehaviour
+    public class TowerTests
     {
-
+        [UnityTest]
+        public IEnumerator NewTestScriptWithEnumeratorPasses()
+        {
+            yield return null;
+        }
     }
 }

@@ -3116,8 +3116,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1710336768}
-  - component: {fileID: 1710336769}
   - component: {fileID: 1710336770}
+  - component: {fileID: 1710336769}
   m_Layer: 0
   m_Name: RoadPath
   m_TagString: Untagged

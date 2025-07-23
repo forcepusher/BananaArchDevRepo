@@ -1,5 +1,5 @@
 {
-    "name": "BananaParty.Arch.Samples.Tests",
+    "name": "BananaParty.Arch.TowerDefenseSample.Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
