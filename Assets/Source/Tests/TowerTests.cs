@@ -1,4 +1,6 @@
 using System.Collections;
+using BananaParty.Arch.TestingUtility;
+using UnityEngine;
 using UnityEngine.TestTools;
 
 namespace BananaParty.Arch.TowerDefenseSample.Tests
@@ -8,6 +10,8 @@ namespace BananaParty.Arch.TowerDefenseSample.Tests
         [UnityTest]
         public IEnumerator ArcherTower_OnFirstMap_KillsTenMonsters()
         {
+            SceneListAsset sceneAssetList = Resources.Load<SceneListAsset>("CatShouldReachCameraViewportTestSceneList");
+
             yield return null;
         }
     }

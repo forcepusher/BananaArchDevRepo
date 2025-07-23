@@ -1,4 +1,4 @@
-namespace BananaParty.Arch.TestingUtilities
+namespace BananaParty.Arch.TestingUtility
 {
     public static class TestRunnerApplication
     {
