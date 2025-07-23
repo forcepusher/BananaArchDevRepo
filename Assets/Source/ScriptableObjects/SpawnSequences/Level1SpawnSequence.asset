@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e787d66492c8f7429384d07fd4ee7cd, type: 3}
+  m_Name: Level1SpawnSequence
+  m_EditorClassIdentifier: 
+  _monsterPacks:
+  - _monsterPrefab: {fileID: 4147384857791544120, guid: 557b63aeb59fc524da1fd85470a851d6, type: 3}
+    _spawnQuantity: 25
+    _spawnDelay: 1
+    _spawnInterval: 0.3
+  - _monsterPrefab: {fileID: 4147384857791544120, guid: 557b63aeb59fc524da1fd85470a851d6, type: 3}
+    _spawnQuantity: 25
+    _spawnDelay: 2
+    _spawnInterval: 0.3

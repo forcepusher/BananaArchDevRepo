@@ -14,7 +14,7 @@ namespace BananaParty.Arch.TowerDefenseSample
         [SerializeField]
         private float _spawnDelay = 1f;
         [SerializeField]
-        private float _spawnInterval = 0.2f;
+        private float _spawnInterval = 0.3f;
 
         public IEnumerator SpawnCoroutineFixedTime(float tickInterval, Vector3 position)
         {

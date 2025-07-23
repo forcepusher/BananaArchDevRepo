@@ -1,44 +1,23 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace BananaParty.Arch.TowerDefenseSample
 {
-    public class SpawnSequence : MonoBehaviour
+    [CreateAssetMenu]
+    public class SpawnSequence : ScriptableObject
     {
         [SerializeField]
         private List<MonsterPack> _monsterPacks;
 
-        private IEnumerator _spawnPacksCoroutine;
-
-        private void Start()
-        {
-            _spawnPacksCoroutine = SpawnPacks();
-        }
-
-        private void FixedUpdate()
-        {
-            if (!_spawnPacksCoroutine.MoveNext())
-                enabled = false;
-        }
-
-        private IEnumerator SpawnPacks()
+        public IEnumerator SpawnPacksCoroutineFixedTime(float tickInterval, Vector3 position)
         {
             foreach (MonsterPack monsterPack in _monsterPacks)
             {
-                IEnumerator spawnCoroutine = monsterPack.SpawnCoroutineFixedTime(Time.fixedDeltaTime, transform.position);
+                IEnumerator spawnCoroutine = monsterPack.SpawnCoroutineFixedTime(tickInterval, position);
                 while (spawnCoroutine.MoveNext())
                     yield return spawnCoroutine.Current;
             }
-        }
-
-        public void OverrideMonsterPacks(List<MonsterPack> monsterPacks)
-        {
-            if (_spawnPacksCoroutine != null)
-                throw new InvalidOperationException($"Nope, too late to override. {nameof(SpawnSequence)} is already running.");
-
-            _monsterPacks = monsterPacks;
         }
     }
 }
