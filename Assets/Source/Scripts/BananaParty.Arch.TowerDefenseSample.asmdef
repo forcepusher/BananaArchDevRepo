@@ -1,0 +1,16 @@
+{
+    "name": "BananaParty.Arch.TowerDefenseSample",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e5f7fbc6ec8503c42b931406f7c1a9c4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

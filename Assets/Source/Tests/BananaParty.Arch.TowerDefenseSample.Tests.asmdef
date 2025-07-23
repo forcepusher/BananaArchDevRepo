@@ -4,7 +4,8 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "BananaParty.Arch"
+        "BananaParty.Arch",
+        "BananaParty.Arch.TowerDefenseSample"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

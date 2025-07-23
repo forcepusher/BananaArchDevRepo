@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,14 @@ namespace BananaParty.Arch.TowerDefenseSample
                 while (spawnCoroutine.MoveNext())
                     yield return spawnCoroutine.Current;
             }
+        }
+
+        public void OverrideMonsterPacks(List<MonsterPack> monsterPacks)
+        {
+            if (_spawnPacksCoroutine != null)
+                throw new InvalidOperationException($"Nope, too late to override. {nameof(SpawnSequence)} is already running.");
+
+            _monsterPacks = monsterPacks;
         }
     }
 }
