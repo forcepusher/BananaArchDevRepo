@@ -6,7 +6,7 @@ namespace BananaParty.Arch.TowerDefenseSample.Tests
     public class TowerTests
     {
         [UnityTest]
-        public IEnumerator NewTestScriptWithEnumeratorPasses()
+        public IEnumerator ArcherTower_TenMonsters_KillsAllMonsters()
         {
             yield return null;
         }
