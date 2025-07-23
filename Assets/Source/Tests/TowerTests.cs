@@ -1,5 +1,5 @@
 using System.Collections;
-using BananaParty.Arch.TestingUtility;
+using BananaParty.Arch.TestUtilities;
 using UnityEngine;
 using UnityEngine.TestTools;
 
