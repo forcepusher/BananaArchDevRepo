@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BananaParty.Arch.Samples
+namespace BananaParty.Arch.TowerDefenseSample
 {
     public class SpawnSequence : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace BananaParty.Arch.Samples
+namespace BananaParty.Arch.TowerDefenseSample
 {
     [Serializable]
     public class MonsterPack

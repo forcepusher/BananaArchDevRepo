@@ -1,4 +1,4 @@
-namespace BananaParty.Arch.Samples
+namespace BananaParty.Arch.TowerDefenseSample
 {
     public class MonsterReferenceSource : ReferenceSource<Monster>
     {

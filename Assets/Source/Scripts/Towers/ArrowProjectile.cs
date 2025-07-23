@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BananaParty.Arch.Samples
+namespace BananaParty.Arch.TowerDefenseSample
 {
     public class ArrowProjectile : MonoBehaviour
     {

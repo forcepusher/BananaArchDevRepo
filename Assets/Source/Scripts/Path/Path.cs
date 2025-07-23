@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BananaParty.Arch.Samples
+namespace BananaParty.Arch.TowerDefenseSample
 {
     public class Path : MonoBehaviour
     {
