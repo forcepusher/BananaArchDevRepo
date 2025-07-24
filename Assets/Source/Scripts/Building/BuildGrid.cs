@@ -23,6 +23,12 @@ namespace BananaParty.Arch.TowerDefenseSample
 
         private readonly HashSet<Vector3Int> _busyTiles = new();
 
+        private void Start()
+        {
+            foreach (ArcherTower archerTower in FindObjectsOfType<ArcherTower>())
+                RegisterBuilding(archerTower);
+        }
+
         public void OnPointerClick(PointerEventData pointerClickEventData)
         {
             RaycastResult clickRaycastResult = pointerClickEventData.pointerCurrentRaycast;
@@ -51,14 +57,26 @@ namespace BananaParty.Arch.TowerDefenseSample
                     return;
                 }
 
-                GameObject.Instantiate(_archerTowerPrefab, _grid.GetCellCenterWorld(gridSpacePosition), Quaternion.identity);
-                _busyTiles.Add(gridSpacePosition);
-                Debug.Log(pointerClickEventData.position);
+                PlaceBuilding(gridSpacePosition);
             }
             else
             {
                 throw new Exception($"Received {nameof(OnPointerClick)} from an uknnown {nameof(Tilemap)} {clickedTilemap.name}");
             }
+        }
+
+        public void PlaceBuilding(Vector3Int gridSpacePosition)
+        {
+            GameObject.Instantiate(_archerTowerPrefab, _grid.GetCellCenterWorld(gridSpacePosition), Quaternion.identity);
+            if (!_busyTiles.Add(gridSpacePosition))
+                throw new InvalidOperationException($"Tried to {nameof(PlaceBuilding)} on a tile that is already busy: {gridSpacePosition}");
+        }
+
+        public void RegisterBuilding(ArcherTower archerTower)
+        {
+            Vector3Int gridSpacePosition = _grid.WorldToCell(archerTower.transform.position);
+            if (!_busyTiles.Add(gridSpacePosition))
+                throw new InvalidOperationException($"Tried to {nameof(RegisterBuilding)} on a tile that is already busy: {gridSpacePosition}");
         }
     }
 }

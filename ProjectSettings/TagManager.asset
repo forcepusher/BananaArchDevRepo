@@ -50,10 +50,7 @@ TagManager:
   - name: Monster
     uniqueID: 1858587211
     locked: 0
-  - name: Castle
-    uniqueID: 2295139793
-    locked: 0
-  - name: Tower
+  - name: Building
     uniqueID: 4168333369
     locked: 0
   - name: Projectile
