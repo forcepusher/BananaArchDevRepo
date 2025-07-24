@@ -22,6 +22,9 @@ namespace BananaParty.Arch.TowerDefenseSample.Tests
             SpawnSequence tenSkeletonsSpawnSequence = Resources.Load<SpawnSequence>("TenSkeletons");
             spawnPoint.OverrideSpawnSequence(tenSkeletonsSpawnSequence);
 
+            // Timescale at 10 for demonstration purposes. Put it all the way to 100 for production.
+            Time.timeScale = 10f;
+
             yield return new TimedWaitUntil(() => spawnPoint.SpawnSequenceFinished,
             TimeSpan.FromSeconds(20),
             () => Assert.Fail($"{nameof(SpawnSequence)} did not finish spawning within timeout period."),
@@ -29,7 +32,7 @@ namespace BananaParty.Arch.TowerDefenseSample.Tests
 
             yield return new TimedWaitUntil(() => GameObject.FindObjectsOfType<Monster>().Length == 0,
             TimeSpan.FromSeconds(20),
-            () => Assert.Fail($"{nameof(ArcherTower)} did not kill all monsters."),
+            () => Assert.Fail($"{nameof(ArcherTower)} did not kill all {nameof(Monster)}."),
             TimeoutMode.InGameTime);
         }
     }
