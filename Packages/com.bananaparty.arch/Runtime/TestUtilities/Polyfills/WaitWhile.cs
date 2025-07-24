@@ -1,4 +1,4 @@
-// This is a copy of WaitWhile.cs from Unity 6
+// This is a copy of WaitWhile.cs from Unity 6, to make it available in Unity 2022.3.
 
 using System;
 using System.Runtime.CompilerServices;
