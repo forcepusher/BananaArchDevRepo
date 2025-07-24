@@ -25,6 +25,7 @@ namespace BananaParty.Arch.TowerDefenseSample
 
         private void Start()
         {
+            // Sometimes creating Reference and Source scripts is not worth it
             foreach (ArcherTower archerTower in FindObjectsOfType<ArcherTower>())
                 RegisterBuilding(archerTower);
         }
