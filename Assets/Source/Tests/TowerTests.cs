@@ -22,8 +22,8 @@ namespace BananaParty.Arch.TowerDefenseSample.Tests
             SpawnSequence tenSkeletonsSpawnSequence = Resources.Load<SpawnSequence>("TenSkeletons");
             spawnPoint.OverrideSpawnSequence(tenSkeletonsSpawnSequence);
 
-            // Timescale at 10 for demonstration purposes. Put it all the way to 100 for production.
-            Time.timeScale = 10f;
+            // Timescale at 5 for demonstration purposes. Crank it all the way to 100 for production.
+            Time.timeScale = 5f;
 
             yield return new TimedWaitUntil(() => spawnPoint.SpawnSequenceFinished,
             TimeSpan.FromSeconds(20),
