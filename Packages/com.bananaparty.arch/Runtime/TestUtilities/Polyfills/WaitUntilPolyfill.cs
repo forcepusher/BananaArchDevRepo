@@ -1,4 +1,4 @@
-// This is a copy of WaitWhile.cs from Unity 6, to make it available in Unity 2022.3.
+// This is a copy of WaitUntil.cs from Unity 6, to make it available in Unity 2022.3.
 
 using System;
 using System.Runtime.CompilerServices;
@@ -7,9 +7,9 @@ using UnityEngine;
 namespace BananaParty.Arch.TestUtilities.Polyfills
 {
     /// <summary>
-    /// Suspends the coroutine execution until the supplied delegate evaluates to false.
+    /// Suspends the coroutine execution until the supplied delegate evaluates to true.
     /// </summary>
-    public sealed class WaitWhile : CustomYieldInstruction
+    public sealed class WaitUntilPolyfill : CustomYieldInstruction
     {
         private readonly Func<bool> m_Predicate;
 
@@ -25,7 +25,7 @@ namespace BananaParty.Arch.TestUtilities.Polyfills
             {
                 if (m_MaxExecutionTime == -1.0)
                 {
-                    return m_Predicate();
+                    return !m_Predicate();
                 }
 
                 if (GetTime() > m_MaxExecutionTime)
@@ -34,16 +34,16 @@ namespace BananaParty.Arch.TestUtilities.Polyfills
                     return false;
                 }
 
-                return m_Predicate();
+                return !m_Predicate();
             }
         }
 
-        public WaitWhile(Func<bool> predicate)
+        public WaitUntilPolyfill(Func<bool> predicate)
         {
             m_Predicate = predicate;
         }
 
-        public WaitWhile(Func<bool> predicate, TimeSpan timeout, Action onTimeout, WaitTimeoutMode timeoutMode = WaitTimeoutMode.Realtime) : this(predicate)
+        public WaitUntilPolyfill(Func<bool> predicate, TimeSpan timeout, Action onTimeout, WaitTimeoutMode timeoutMode = WaitTimeoutMode.Realtime) : this(predicate)
         {
             if (timeoutMode == WaitTimeoutMode.InGameTime && !Application.isPlaying)
             {

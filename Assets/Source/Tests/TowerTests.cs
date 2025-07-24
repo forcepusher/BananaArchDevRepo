@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using BananaParty.Arch.TestUtilities;
+using BananaParty.Arch.TestUtilities.Polyfills;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,14 +18,14 @@ namespace BananaParty.Arch.TowerDefenseSample.Tests
 
             yield return SceneManager.LoadSceneAsync(mapList.SceneReferences[0].SceneName);
 
-            SpawnPoint spawnPoint = Object.FindFirstObjectByType<SpawnPoint>();
+            SpawnPoint spawnPoint = GameObject.FindFirstObjectByType<SpawnPoint>();
             SpawnSequence tenSkeletonsSpawnSequence = Resources.Load<SpawnSequence>("TenSkeletonsSpawnSequence");
             spawnPoint.OverrideSpawnSequence(tenSkeletonsSpawnSequence);
 
-            //yield return new WaitUntil(() =>
-            //{
-            //    return spawnPoint.Started;
-            //}, System.TimeSpan.FromSeconds(3), () => Assert.Fail($"{nameof(SpawnSequence)} did not start."));
+            yield return new WaitUntilPolyfill(() => spawnPoint.SpawnSequenceFinished,
+            TimeSpan.FromSeconds(20),
+            () => Assert.Fail($"{nameof(SpawnSequence)} did not finish spawning within timeout period."),
+            WaitTimeoutMode.InGameTime);
         }
     }
 }
