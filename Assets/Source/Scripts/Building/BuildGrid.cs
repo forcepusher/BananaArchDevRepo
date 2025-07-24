@@ -62,7 +62,7 @@ namespace BananaParty.Arch.TowerDefenseSample
             }
             else
             {
-                throw new Exception($"Received {nameof(OnPointerClick)} from an uknnown {nameof(Tilemap)} {clickedTilemap.name}");
+                throw new InvalidOperationException($"Received {nameof(OnPointerClick)} from an uknnown {nameof(Tilemap)} {clickedTilemap.name}");
             }
         }
 
