@@ -47,6 +47,9 @@ TagManager:
   - name: Road
     uniqueID: 2637815779
     locked: 0
+  - name: Shadow
+    uniqueID: 719295821
+    locked: 0
   - name: Monster
     uniqueID: 1858587211
     locked: 0
