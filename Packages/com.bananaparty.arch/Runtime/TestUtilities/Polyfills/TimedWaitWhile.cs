@@ -1,4 +1,5 @@
 // This is a copy of WaitWhile.cs from Unity 6, to make it available in Unity 2022.3.
+// Slightly renamed to avoid naming conflicts.
 
 using System;
 using System.Runtime.CompilerServices;
@@ -9,13 +10,13 @@ namespace BananaParty.Arch.TestUtilities.Polyfills
     /// <summary>
     /// Suspends the coroutine execution until the supplied delegate evaluates to false.
     /// </summary>
-    public sealed class WaitWhilePolyfill : CustomYieldInstruction
+    public sealed class TimedWaitWhile : CustomYieldInstruction
     {
         private readonly Func<bool> m_Predicate;
 
         private readonly Action m_TimeoutCallback;
 
-        private readonly WaitTimeoutMode m_TimeoutMode;
+        private readonly TimeoutMode m_TimeoutMode;
 
         private readonly double m_MaxExecutionTime = -1.0;
 
@@ -38,14 +39,11 @@ namespace BananaParty.Arch.TestUtilities.Polyfills
             }
         }
 
-        public WaitWhilePolyfill(Func<bool> predicate)
+        public TimedWaitWhile(Func<bool> predicate, TimeSpan timeout, Action onTimeout, TimeoutMode timeoutMode = TimeoutMode.Realtime)
         {
             m_Predicate = predicate;
-        }
 
-        public WaitWhilePolyfill(Func<bool> predicate, TimeSpan timeout, Action onTimeout, WaitTimeoutMode timeoutMode = WaitTimeoutMode.Realtime) : this(predicate)
-        {
-            if (timeoutMode == WaitTimeoutMode.InGameTime && !Application.isPlaying)
+            if (timeoutMode == TimeoutMode.InGameTime && !Application.isPlaying)
             {
                 throw new ArgumentException("InGameTime mode is not supported in Editor in edit mode", "timeoutMode");
             }
@@ -63,7 +61,7 @@ namespace BananaParty.Arch.TestUtilities.Polyfills
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private double GetTime()
         {
-            return (m_TimeoutMode == WaitTimeoutMode.InGameTime) ? Time.timeAsDouble : Time.realtimeSinceStartupAsDouble;
+            return (m_TimeoutMode == TimeoutMode.InGameTime) ? Time.timeAsDouble : Time.realtimeSinceStartupAsDouble;
         }
     }
 }

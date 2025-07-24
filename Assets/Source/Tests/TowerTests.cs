@@ -22,10 +22,10 @@ namespace BananaParty.Arch.TowerDefenseSample.Tests
             SpawnSequence tenSkeletonsSpawnSequence = Resources.Load<SpawnSequence>("TenSkeletonsSpawnSequence");
             spawnPoint.OverrideSpawnSequence(tenSkeletonsSpawnSequence);
 
-            yield return new WaitUntilPolyfill(() => spawnPoint.SpawnSequenceFinished,
+            yield return new TimedWaitUntil(() => spawnPoint.SpawnSequenceFinished,
             TimeSpan.FromSeconds(20),
             () => Assert.Fail($"{nameof(SpawnSequence)} did not finish spawning within timeout period."),
-            WaitTimeoutMode.InGameTime);
+            TimeoutMode.InGameTime);
         }
     }
 }

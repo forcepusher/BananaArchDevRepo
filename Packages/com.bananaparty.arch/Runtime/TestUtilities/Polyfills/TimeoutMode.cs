@@ -1,11 +1,12 @@
 // This is a copy of WaitTimeoutMode.cs from Unity 6, to make it available in Unity 2022.3.
+// Slightly renamed to avoid naming conflicts.
 
 namespace BananaParty.Arch.TestUtilities.Polyfills
 {
     /// <summary>
     /// Determines which mode of time measurement to use in wait operations.
     /// </summary>
-    public enum WaitTimeoutMode
+    public enum TimeoutMode
     {
         /// <summary>
         /// Evaluates timeout values as units of real time.
