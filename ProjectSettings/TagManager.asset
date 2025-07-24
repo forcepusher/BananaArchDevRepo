@@ -59,3 +59,6 @@ TagManager:
   - name: Projectile
     uniqueID: 1013264637
     locked: 0
+  - name: NoBuildZone
+    uniqueID: 3531710087
+    locked: 0
